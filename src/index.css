@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-brown text-brand-cream;
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+    background-color: #0E0E0E;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    @apply font-light tracking-wide;
+  }
+}
+
+@layer components {
+
+  /* ── Buttons ── */
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-8 py-3 text-sm tracking-widest uppercase font-body font-semibold
+           bg-gold-gradient text-brand-black transition-all duration-300
+           hover:opacity-90 hover:shadow-lg hover:shadow-brand-gold/30;
+  }
+
+  .btn-outline-gold {
+    @apply inline-flex items-center justify-center px-8 py-3 text-sm tracking-widest uppercase font-body font-medium
+           border border-brand-gold text-brand-gold transition-all duration-300
+           hover:bg-brand-gold hover:text-brand-black;
+  }
+
+  .btn-grey {
+    @apply inline-flex items-center justify-center px-8 py-3 text-sm tracking-widest uppercase font-body font-medium
+           border border-brand-grey text-brand-grey transition-all duration-300
+           hover:border-brand-cream hover:text-brand-cream;
+  }
+
+  /* ── Typography ── */
+  .section-title {
+    @apply text-4xl md:text-5xl font-script text-brand-gold mb-3;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl font-sans font-light text-brand-cream/70 tracking-wider mb-8;
+  }
+
+  /* ── Dividers ── */
+  .gold-divider {
+    @apply w-20 h-px bg-gold-gradient mx-auto mb-8;
+  }
+
+  .gold-divider-left {
+    @apply w-16 h-px bg-gold-gradient mb-6;
+  }
+
+  /* ── Cards ── */
+  .card-dark {
+    @apply bg-brand-brown-light border border-white/5 rounded p-6
+           transition-all duration-300;
+  }
+
+  .card-dark:hover {
+    @apply border-brand-gold/30 shadow-lg shadow-black/40;
+  }
+
+  .card-service {
+    @apply bg-[#141414] border border-white/5 rounded p-7 flex flex-col
+           transition-all duration-300 cursor-default;
+  }
+
+  .card-service:hover {
+    @apply border-brand-gold/40 shadow-xl shadow-black/50 -translate-y-0.5;
+  }
+
+  /* ── Forms ── */
+  .input-dark {
+    @apply w-full bg-brand-brown-light border border-white/10 rounded px-4 py-3
+           text-brand-cream placeholder-white/20 font-body text-sm
+           focus:outline-none focus:border-brand-gold/50 transition-colors duration-200;
+  }
+
+  .label-gold {
+    @apply block text-xs tracking-widest uppercase text-brand-gold/70 mb-2 font-body;
+  }
+
+  /* ── Price badge ── */
+  .price-tag {
+    @apply font-sans text-2xl text-brand-gold font-normal;
+  }
+
+  .price-label {
+    @apply font-body text-xs text-brand-grey tracking-wider;
+  }
+
+  /* ── Feature list ── */
+  .feature-item {
+    @apply flex items-start gap-2.5 text-sm text-brand-cream/60 font-body leading-relaxed;
+  }
+
+  .feature-dot {
+    @apply w-1 h-1 rounded-full bg-brand-gold mt-2 flex-shrink-0;
+  }
+
+  /* ── Section overlines ── */
+  .overline {
+    @apply font-body text-xs tracking-[0.4em] uppercase text-brand-gold mb-2;
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0E0E0E; }
+::-webkit-scrollbar-thumb { background: #C9A84C33; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #C9A84C66; }
+
+/* ── Scroll-fade-in animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* ── Gold shimmer on hover ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
