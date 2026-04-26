@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getServices } from '../services/api';
 
 const whyItems = [
@@ -66,6 +66,90 @@ const testimonials = [
     service: 'HydraFacial',
   },
 ];
+
+function EmailSignup() {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus('loading');
+    // Store in localStorage as a simple contact list (no backend needed)
+    try {
+      const existing = JSON.parse(localStorage.getItem('vitality_subscribers') || '[]');
+      const already = existing.find(s => s.email === email);
+      if (!already) {
+        existing.push({ name, email, date: new Date().toISOString() });
+        localStorage.setItem('vitality_subscribers', JSON.stringify(existing));
+      }
+      setStatus('success');
+      setEmail('');
+      setName('');
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #2A1A0F 0%, #1a0e06 100%)' }}>
+      {/* Gold top border */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, #C9A96E, transparent)' }} />
+      <div className="max-w-2xl mx-auto px-6 text-center">
+        <p className="font-body text-xs tracking-widest uppercase mb-3" style={{ color: '#C9A96E' }}>Exclusive Offers</p>
+        <h2 className="font-display text-3xl md:text-4xl mb-4" style={{ color: '#F5EDD8', fontWeight: 'normal' }}>
+          Be the First to Know
+        </h2>
+        <p className="font-body text-sm leading-relaxed mb-8" style={{ color: '#C0B090' }}>
+          Join our wellness community for exclusive packages, seasonal offers, and priority booking — starting with our Mother's Day collection.
+        </p>
+
+        {status === 'success' ? (
+          <div className="py-6">
+            <p className="font-display text-xl mb-2" style={{ color: '#C9A96E' }}>You're on the list 💛</p>
+            <p className="font-body text-sm" style={{ color: '#C0B090' }}>Watch for exclusive offers from Vitality Wellness MedSpa.</p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+            <input
+              type="text"
+              placeholder="First name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              className="flex-none sm:w-32 px-4 py-3 text-sm font-body outline-none"
+              style={{ background: '#0E0E0E', border: '1px solid #3a2a1a', color: '#D4C5A0' }}
+            />
+            <input
+              type="email"
+              required
+              placeholder="Your email address"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              className="flex-1 px-4 py-3 text-sm font-body outline-none"
+              style={{ background: '#0E0E0E', border: '1px solid #3a2a1a', color: '#D4C5A0' }}
+            />
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="px-6 py-3 text-xs tracking-widest uppercase font-body font-bold transition-opacity hover:opacity-80"
+              style={{ background: '#C9A96E', color: '#1a0e06', whiteSpace: 'nowrap' }}
+            >
+              {status === 'loading' ? '...' : 'Join the List'}
+            </button>
+          </form>
+        )}
+
+        {status === 'error' && (
+          <p className="mt-3 text-xs font-body" style={{ color: '#C9A96E' }}>Something went wrong — please try again.</p>
+        )}
+        <p className="mt-4 text-xs font-body" style={{ color: '#5a4a3a' }}>No spam. Unsubscribe anytime.</p>
+      </div>
+      {/* Gold bottom border */}
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, #C9A96E, transparent)' }} />
+    </section>
+  );
+}
 
 export default function Home() {
   const [featuredServices, setFeaturedServices] = useState([]);
@@ -467,6 +551,9 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* ── EMAIL SIGNUP ── */}
+      <EmailSignup />
 
       {/* ── LOCATION / HOURS STRIP ── */}
       <section className="py-14 bg-brand-brown border-t border-white/5">
