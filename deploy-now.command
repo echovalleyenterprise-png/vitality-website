@@ -2,7 +2,7 @@
 cd "$(dirname "$0")"
 
 # Remove stale lock if present
-rm -f .git/index.lock
+rm -f .git/index.lock .git/HEAD.lock .git/refs/remotes/origin/main.lock
 
 echo "→ Staging all changes..."
 git config user.email "echovalleyenterprise@gmail.com"
@@ -10,7 +10,7 @@ git config user.name "Vitality Deploy"
 git add -A
 
 echo "→ Committing..."
-git commit -m "feat: add stock imagery to services section, enhance home page visuals"
+git commit -m "fix: show Consult instead of \$0 for consultation-required services in booking" --allow-empty
 
 echo "→ Setting remote..."
 git remote remove origin 2>/dev/null

@@ -45,7 +45,7 @@ function BookingSummary({ service, provider, date, slot }) {
         <div>
           <span className="font-body text-xs text-brand-gold/60 uppercase tracking-widest block">Service</span>
           <span className="font-sans text-sm text-brand-cream">{service.name}</span>
-          {service.price && <span className="font-body text-xs text-brand-gold ml-2">${Number(service.price).toFixed(0)}</span>}
+          {Number(service.price) > 0 && <span className="font-body text-xs text-brand-gold ml-2">${Number(service.price).toFixed(0)}</span>}
         </div>
         {provider && (
           <>
@@ -235,7 +235,7 @@ export default function Booking() {
                     : `${selectedProvider?.first_name} ${selectedProvider?.last_name}` },
                 { label: 'Date',       value: new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }) },
                 { label: 'Time',       value: selectedSlot?.display },
-                { label: 'Price',      value: selectedService?.price ? `$${Number(selectedService.price).toFixed(2)}` : 'Consultation' },
+                { label: 'Price',      value: Number(selectedService?.price) > 0 ? `$${Number(selectedService.price).toFixed(2)}` : 'Consultation' },
               ].map(({ label, value }) => (
                 <div key={label} className="flex justify-between">
                   <span className="font-body text-xs text-brand-cream/40 uppercase tracking-widest">{label}</span>
@@ -328,7 +328,7 @@ export default function Booking() {
                       >
                         <div className="flex items-start justify-between mb-2">
                           <h4 className="font-sans text-lg text-brand-cream group-hover:text-brand-gold transition-colors leading-tight">{svc.name}</h4>
-                          {svc.price
+                          {Number(svc.price) > 0
                             ? <span className="price-tag text-base ml-2 shrink-0">${Number(svc.price).toFixed(0)}</span>
                             : <span className="font-body text-xs text-brand-gold/60 ml-2 shrink-0 mt-1">Consult</span>
                           }
@@ -578,7 +578,7 @@ export default function Booking() {
                   { label: 'Date',      value: new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }) },
                   { label: 'Time',      value: selectedSlot?.display },
                   { label: 'Duration',  value: `${selectedService?.duration_minutes} minutes` },
-                  { label: 'Price',     value: selectedService?.price ? `$${Number(selectedService.price).toFixed(2)}` : 'Consultation required' },
+                  { label: 'Price',     value: Number(selectedService?.price) > 0 ? `$${Number(selectedService.price).toFixed(2)}` : 'Consultation required' },
                   { label: 'Client',    value: `${patient?.first_name} ${patient?.last_name}` },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between py-3 first:pt-0 last:pb-0">
