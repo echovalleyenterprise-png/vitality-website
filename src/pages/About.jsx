@@ -55,13 +55,25 @@ export default function About() {
               Whether you are focused on restoring energy, supporting immunity, enhancing beauty, or optimizing overall wellness, our goal is to meet you exactly where you are.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map(({ number, label }) => (
-              <div key={label} className="card-service text-center py-8">
-                <p className="font-script text-5xl text-brand-gold mb-2">{number}</p>
-                <p className="font-body text-xs tracking-widest uppercase text-brand-grey">{label}</p>
-              </div>
-            ))}
+          <div className="relative">
+            {/* Main photo */}
+            <div className="relative overflow-hidden" style={{ paddingTop: '120%' }}>
+              <img
+                src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=700&q=80"
+                alt="Vitality Wellness — professional care"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.5) 0%, transparent 50%)' }} />
+            </div>
+            {/* Floating stat card */}
+            <div
+              className="absolute -bottom-6 -left-6 p-6 border border-brand-gold/30"
+              style={{ background: '#0E0E0E' }}
+            >
+              <div className="font-sans text-3xl" style={{ background: 'linear-gradient(135deg, #C9A84C, #E4C97A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>500+</div>
+              <div className="font-body text-xs tracking-widest uppercase text-brand-grey mt-1">Clients Served</div>
+            </div>
           </div>
         </div>
       </section>

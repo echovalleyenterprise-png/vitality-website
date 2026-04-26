@@ -3,7 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 import { usePatientAuth } from '../context/PatientAuthContext';
 
-const CRM_URL = import.meta.env.VITE_CRM_URL || 'http://localhost:5173';
+const CRM_URL = import.meta.env.VITE_CRM_URL || 'https://vitality-crm.vercel.app';
 
 const navLinks = [
   { to: '/',         label: 'Home'     },

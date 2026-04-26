@@ -80,48 +80,115 @@ export default function Home() {
     <div className="overflow-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex items-center justify-center bg-brand-black">
-        {/* Decorative rings */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-brand-gold/8" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-brand-gold/5" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] rounded-full border border-brand-gold/3" />
-          {/* Subtle corner accents */}
-          <div className="absolute top-16 left-16 w-16 h-16 border-t border-l border-brand-gold/20" />
-          <div className="absolute top-16 right-16 w-16 h-16 border-t border-r border-brand-gold/20" />
-          <div className="absolute bottom-16 left-16 w-16 h-16 border-b border-l border-brand-gold/20" />
-          <div className="absolute bottom-16 right-16 w-16 h-16 border-b border-r border-brand-gold/20" />
+      <section className="relative h-screen flex flex-col bg-brand-black overflow-hidden" style={{ minHeight: '680px' }}>
+
+        {/* Video background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.35 }}
+        >
+          <source src="https://cdn.pixabay.com/video/2023/10/06/183735-872033751_large.mp4" type="video/mp4" />
+          <source src="https://cdn.pixabay.com/video/2015/09/06/701-138504820_large.mp4" type="video/mp4" />
+        </video>
+        {/* Dark gradient overlay so text stays crisp */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(105deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.70) 50%, rgba(8,8,8,0.40) 100%)' }}
+        />
+
+        {/* Giant "V" watermark — right side */}
+        <div className="absolute right-[-4rem] top-0 bottom-0 flex items-center pointer-events-none select-none overflow-hidden">
+          <span
+            className="font-script leading-none"
+            style={{ fontSize: 'clamp(480px, 55vw, 900px)', color: 'rgba(201,168,76,0.04)' }}
+          >
+            V
+          </span>
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-24">
-          <p className="overline mb-6">Hallandale Beach, FL</p>
+        {/* Thin vertical accent line */}
+        <div className="absolute left-0 md:left-16 top-0 h-full w-px bg-gradient-to-b from-transparent via-brand-gold/20 to-transparent" />
 
-          <h1 className="font-script text-8xl md:text-[10rem] bg-gold-gradient bg-clip-text text-transparent leading-none mb-2">
-            Vitality
-          </h1>
-          <p className="font-body text-xs tracking-[0.6em] uppercase text-brand-grey mb-10">
-            Wellness MedSpa
-          </p>
+        {/* Top horizontal rule */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-gold/25 to-transparent" />
 
-          <div className="gold-divider" />
+        {/* Main content — left-aligned, vertically centered */}
+        <div className="relative z-10 flex-1 flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-8 md:px-20 pt-28 pb-10">
 
-          <p className="font-sans text-2xl md:text-4xl text-brand-cream font-light tracking-wide mb-4">
-            Look well. Feel well. Live well.
-          </p>
-          <p className="font-body text-base text-brand-grey mb-12 max-w-xl mx-auto leading-relaxed">
-            Where modern wellness meets intentional care — personalized, results-driven therapies designed to support your body from the inside out.
-          </p>
+            {/* Overline */}
+            <p className="font-body text-xs tracking-[0.5em] uppercase text-brand-gold/60 mb-8 flex items-center gap-3">
+              <span className="w-8 h-px bg-brand-gold/40 inline-block" />
+              Hallandale Beach, FL · IV Therapy & Aesthetic Wellness
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/booking" className="btn-gold">Book Your Appointment</Link>
-            <Link to="/services" className="btn-outline-gold">Explore Services</Link>
+            {/* Script accent */}
+            <p className="font-script text-4xl md:text-5xl text-brand-gold/50 mb-3 leading-none">
+              Vitality Wellness MedSpa
+            </p>
+
+            {/* Main headline — stacked, large */}
+            <h1 className="font-sans font-light leading-[0.92] tracking-tight mb-10" style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)' }}>
+              <span className="block text-brand-cream/90">Look Well.</span>
+              <span className="block text-brand-cream/70">Feel Well.</span>
+              <span
+                className="block bg-clip-text text-transparent"
+                style={{ backgroundImage: 'linear-gradient(135deg, #C9A84C 0%, #E4C97A 50%, #C9A84C 100%)' }}
+              >
+                Live Well.
+              </span>
+            </h1>
+
+            {/* Gold rule */}
+            <div className="w-20 h-px mb-8" style={{ background: 'linear-gradient(90deg, #C9A84C, #E4C97A)' }} />
+
+            {/* Body */}
+            <p className="font-body text-base md:text-lg text-brand-grey/80 mb-12 max-w-lg leading-relaxed">
+              Where modern wellness meets intentional care — personalized,
+              results-driven therapies designed to support your body from the inside out.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <Link to="/booking" className="btn-gold">Book Appointment</Link>
+              <Link
+                to="/services"
+                className="font-body text-xs tracking-[0.3em] uppercase text-brand-cream/50 hover:text-brand-gold transition-colors duration-200 flex items-center gap-2"
+              >
+                Explore Services <span className="text-brand-gold text-base">→</span>
+              </Link>
+            </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <div className="w-px h-10 bg-gold-gradient" />
-          <p className="font-body text-xs tracking-widest uppercase text-brand-gold/40">Scroll</p>
+        {/* Stats strip pinned to bottom */}
+        <div className="relative z-10 border-t border-white/5" style={{ background: '#0E0E0E' }}>
+          <div className="max-w-7xl mx-auto px-8 md:px-20 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { value: '500+', label: 'Clients Served' },
+              { value: '7', label: 'Days a Week' },
+              { value: '6+', label: 'Treatments' },
+              { value: '100%', label: 'Licensed Staff' },
+            ].map((stat, i) => (
+              <div key={i} className="flex items-center gap-4">
+                {i > 0 && <div className="hidden md:block w-px h-8 bg-brand-gold/15 flex-shrink-0" />}
+                <div>
+                  <div
+                    className="font-sans text-2xl leading-none bg-clip-text text-transparent"
+                    style={{ backgroundImage: 'linear-gradient(135deg, #C9A84C 0%, #E4C97A 100%)' }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div className="font-body text-xs tracking-widest uppercase text-brand-grey/60 mt-1">{stat.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -140,8 +207,17 @@ export default function Home() {
       </section>
 
       {/* ── FEATURED INFUSIONS ── */}
-      <section className="py-24 bg-brand-brown">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+      <section className="py-24 relative overflow-hidden" style={{ background: '#0E0E0E' }}>
+        {/* Subtle background image */}
+        <div className="absolute inset-0 pointer-events-none">
+          <img
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&q=60"
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ opacity: 0.07 }}
+          />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <p className="overline">IV Infusion Therapy</p>
           <h2 className="section-title">Signature Drips</h2>
           <div className="gold-divider" />
@@ -178,6 +254,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── PHOTO STRIP ── */}
+      <section className="relative h-72 md:h-96 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=80"
+          alt="Vitality Wellness — premium care"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'center 30%' }}
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(105deg, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.55) 60%, rgba(8,8,8,0.35) 100%)' }} />
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-8 md:px-20">
+            <p className="font-script text-5xl md:text-7xl leading-tight" style={{ color: 'rgba(201,168,76,0.75)' }}>
+              Wellness from<br />the inside out.
+            </p>
+            <div className="w-16 h-px mt-4" style={{ background: 'linear-gradient(90deg, #C9A84C, transparent)' }} />
+          </div>
+        </div>
+      </section>
+
       {/* ── WHY VITALITY ── */}
       <section className="py-24 bg-brand-brown-light">
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -210,54 +305,104 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Infusion Services */}
-            <div className="card-dark border border-brand-gold/20 p-8">
-              <div className="text-brand-gold text-2xl mb-4">◉</div>
-              <h3 className="font-sans text-2xl text-brand-cream mb-2">Infusion Services</h3>
-              <div className="w-8 h-px bg-gold-gradient mb-4" />
-              <ul className="space-y-2 mb-6">
-                {['Focus Flow – Neuro Clarity', 'Ignite Vitality – Rise & Radiate', 'Resilience Drip – Immune Shield', 'Glow Theory – Luminous Within', 'Hydra Luxe – The Compass', 'Renewal Therapy – Full Reset'].map(s => (
-                  <li key={s} className="feature-item">
-                    <span className="feature-dot" />
-                    {s}
-                  </li>
-                ))}
-              </ul>
-              <p className="font-body text-xs text-brand-gold/70">Starting at $175 / session</p>
+            <div className="relative overflow-hidden group" style={{ minHeight: '480px' }}>
+              <img
+                src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80"
+                alt="IV Infusion Therapy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(8,8,8,0.25) 0%, rgba(8,8,8,0.88) 55%, rgba(8,8,8,0.97) 100%)' }} />
+              <div className="absolute inset-0 border border-brand-gold/20 group-hover:border-brand-gold/50 transition-colors duration-300" />
+              <div className="relative z-10 h-full flex flex-col justify-end p-8">
+                <div className="text-brand-gold text-2xl mb-4">◉</div>
+                <h3 className="font-sans text-2xl text-brand-cream mb-2">Infusion Services</h3>
+                <div className="w-8 h-px bg-gold-gradient mb-4" />
+                <ul className="space-y-2 mb-6">
+                  {['Focus Flow – Neuro Clarity', 'Ignite Vitality – Rise & Radiate', 'Resilience Drip – Immune Shield', 'Glow Theory – Luminous Within', 'Hydra Luxe – The Compass', 'Renewal Therapy – Full Reset'].map(s => (
+                    <li key={s} className="feature-item">
+                      <span className="feature-dot" />
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+                <p className="font-body text-xs text-brand-gold/70">Starting at $175 / session</p>
+              </div>
             </div>
 
             {/* Signature Packages */}
-            <div className="card-dark border border-brand-gold/20 p-8">
-              <div className="text-brand-gold text-2xl mb-4">✦</div>
-              <h3 className="font-sans text-2xl text-brand-cream mb-2">Signature Packages</h3>
-              <div className="w-8 h-px bg-gold-gradient mb-4" />
-              <ul className="space-y-2 mb-6">
-                {['Signature Vitality – Immunity', 'Optimal Recovery – Performance', 'Comfort Reset – Physical Restoration'].map(s => (
-                  <li key={s} className="feature-item">
-                    <span className="feature-dot" />
-                    {s}
-                  </li>
-                ))}
-              </ul>
-              <p className="font-body text-xs text-brand-gold/70">Starting at $225 / session</p>
+            <div className="relative overflow-hidden group" style={{ minHeight: '480px' }}>
+              <img
+                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80"
+                alt="Signature Wellness Packages"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(8,8,8,0.25) 0%, rgba(8,8,8,0.88) 55%, rgba(8,8,8,0.97) 100%)' }} />
+              <div className="absolute inset-0 border border-brand-gold/20 group-hover:border-brand-gold/50 transition-colors duration-300" />
+              <div className="relative z-10 h-full flex flex-col justify-end p-8">
+                <div className="text-brand-gold text-2xl mb-4">✦</div>
+                <h3 className="font-sans text-2xl text-brand-cream mb-2">Signature Packages</h3>
+                <div className="w-8 h-px bg-gold-gradient mb-4" />
+                <ul className="space-y-2 mb-6">
+                  {['Signature Vitality – Immunity', 'Optimal Recovery – Performance', 'Comfort Reset – Physical Restoration'].map(s => (
+                    <li key={s} className="feature-item">
+                      <span className="feature-dot" />
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+                <p className="font-body text-xs text-brand-gold/70">Starting at $225 / session</p>
+              </div>
             </div>
 
             {/* Additional Services */}
-            <div className="card-dark border border-brand-gold/20 p-8">
-              <div className="text-brand-gold text-2xl mb-4">◇</div>
-              <h3 className="font-sans text-2xl text-brand-cream mb-2">Additional Services</h3>
-              <div className="w-8 h-px bg-gold-gradient mb-4" />
-              <ul className="space-y-2 mb-6">
-                {['HydraFacials', 'Microneedling', 'GLP-1 Medications', 'Weight Loss Solutions', 'Nutritional Education', 'Advanced Skin Services'].map(s => (
-                  <li key={s} className="feature-item">
-                    <span className="feature-dot" />
-                    {s}
-                  </li>
-                ))}
-              </ul>
-              <p className="font-body text-xs text-brand-gold/70">Consultation required</p>
+            <div className="relative overflow-hidden group" style={{ minHeight: '480px' }}>
+              <img
+                src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80"
+                alt="Aesthetic & Skin Services"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(8,8,8,0.25) 0%, rgba(8,8,8,0.88) 55%, rgba(8,8,8,0.97) 100%)' }} />
+              <div className="absolute inset-0 border border-brand-gold/20 group-hover:border-brand-gold/50 transition-colors duration-300" />
+              <div className="relative z-10 h-full flex flex-col justify-end p-8">
+                <div className="text-brand-gold text-2xl mb-4">◇</div>
+                <h3 className="font-sans text-2xl text-brand-cream mb-2">Additional Services</h3>
+                <div className="w-8 h-px bg-gold-gradient mb-4" />
+                <ul className="space-y-2 mb-6">
+                  {['HydraFacials', 'Microneedling', 'GLP-1 Medications', 'Weight Loss Solutions', 'Nutritional Education', 'Advanced Skin Services'].map(s => (
+                    <li key={s} className="feature-item">
+                      <span className="feature-dot" />
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+                <p className="font-body text-xs text-brand-gold/70">Consultation required</p>
+              </div>
             </div>
           </div>
+
+          <div className="mt-10 text-center">
+            <Link to="/services" className="btn-outline-gold">View Full Treatment Menu</Link>
+          </div>
         </div>
+      </section>
+
+      {/* ── PHOTO GRID ── */}
+      <section className="grid grid-cols-2 md:grid-cols-4 h-64 md:h-80">
+        {[
+          { src: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80', alt: 'Luxury spa treatment' },
+          { src: 'https://images.unsplash.com/photo-1552693673-1bf958298935?w=600&q=80', alt: 'Wellness therapy' },
+          { src: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80', alt: 'Skincare treatment' },
+          { src: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80', alt: 'Medical aesthetics' },
+        ].map((img, i) => (
+          <div key={i} className="relative overflow-hidden group">
+            <img
+              src={img.src}
+              alt={img.alt}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-brand-black/40 group-hover:bg-brand-black/20 transition-colors duration-300" />
+          </div>
+        ))}
       </section>
 
       {/* ── CTA BANNER ── */}

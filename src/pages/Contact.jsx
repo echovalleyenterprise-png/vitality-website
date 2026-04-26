@@ -27,8 +27,16 @@ export default function Contact() {
   return (
     <div className="pt-24">
       {/* Header */}
-      <section className="py-16 bg-brand-brown text-center">
-        <div className="max-w-3xl mx-auto px-6">
+      <section className="relative py-28 text-center overflow-hidden" style={{ background: '#080808' }}>
+        <img
+          src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1920&q=80"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.15 }}
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(8,8,8,0.5) 0%, rgba(8,8,8,0.3) 50%, rgba(8,8,8,0.7) 100%)' }} />
+        <div className="relative z-10 max-w-3xl mx-auto px-6">
           <p className="font-body text-xs tracking-[0.4em] uppercase text-brand-gold mb-2">Get in Touch</p>
           <h1 className="section-title">Contact Us</h1>
           <div className="gold-divider" />

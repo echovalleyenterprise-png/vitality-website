@@ -142,10 +142,17 @@ export default function Services() {
     <div className="pt-24">
 
       {/* ── PAGE HEADER ── */}
-      <section className="py-20 bg-brand-black text-center relative overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
-          <span className="font-script text-[18rem] text-brand-gold leading-none select-none">V</span>
-        </div>
+      <section className="relative py-32 text-center overflow-hidden" style={{ background: '#080808' }}>
+        {/* Background photo */}
+        <img
+          src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.18 }}
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(8,8,8,0.6) 0%, rgba(8,8,8,0.3) 50%, rgba(8,8,8,0.8) 100%)' }} />
         <div className="relative z-10 max-w-3xl mx-auto px-6">
           <p className="overline">What We Offer</p>
           <h1 className="section-title">Our Services</h1>

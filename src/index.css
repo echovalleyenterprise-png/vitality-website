@@ -8,14 +8,15 @@
   }
 
   body {
-    @apply bg-brand-brown text-brand-cream;
-    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
     background-color: #0E0E0E;
+    color: #D8D8D8;
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    @apply font-light tracking-wide;
+    font-weight: 300;
+    letter-spacing: 0.025em;
   }
 }
 
@@ -23,92 +24,203 @@
 
   /* ── Buttons ── */
   .btn-gold {
-    @apply inline-flex items-center justify-center px-8 py-3 text-sm tracking-widest uppercase font-body font-semibold
-           bg-gold-gradient text-brand-black transition-all duration-300
-           hover:opacity-90 hover:shadow-lg hover:shadow-brand-gold/30;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    background: linear-gradient(135deg, #C9A84C 0%, #E4C97A 50%, #C9A84C 100%);
+    color: #080808;
+    transition: all 0.3s;
+  }
+
+  .btn-gold:hover {
+    opacity: 0.9;
+    box-shadow: 0 10px 15px -3px rgba(201, 168, 76, 0.3);
   }
 
   .btn-outline-gold {
-    @apply inline-flex items-center justify-center px-8 py-3 text-sm tracking-widest uppercase font-body font-medium
-           border border-brand-gold text-brand-gold transition-all duration-300
-           hover:bg-brand-gold hover:text-brand-black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    border: 1px solid #C9A84C;
+    color: #C9A84C;
+    transition: all 0.3s;
+  }
+
+  .btn-outline-gold:hover {
+    background-color: #C9A84C;
+    color: #080808;
   }
 
   .btn-grey {
-    @apply inline-flex items-center justify-center px-8 py-3 text-sm tracking-widest uppercase font-body font-medium
-           border border-brand-grey text-brand-grey transition-all duration-300
-           hover:border-brand-cream hover:text-brand-cream;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    border: 1px solid #888888;
+    color: #888888;
+    transition: all 0.3s;
+  }
+
+  .btn-grey:hover {
+    border-color: #D8D8D8;
+    color: #D8D8D8;
   }
 
   /* ── Typography ── */
   .section-title {
-    @apply text-4xl md:text-5xl font-script text-brand-gold mb-3;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #C9A84C;
+    margin-bottom: 0.75rem;
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl font-sans font-light text-brand-cream/70 tracking-wider mb-8;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: rgba(216, 216, 216, 0.7);
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
   }
 
   /* ── Dividers ── */
   .gold-divider {
-    @apply w-20 h-px bg-gold-gradient mx-auto mb-8;
+    width: 5rem;
+    height: 1px;
+    background: linear-gradient(135deg, #C9A84C 0%, #E4C97A 50%, #C9A84C 100%);
+    margin: 0 auto 2rem;
   }
 
   .gold-divider-left {
-    @apply w-16 h-px bg-gold-gradient mb-6;
+    width: 4rem;
+    height: 1px;
+    background: linear-gradient(135deg, #C9A84C 0%, #E4C97A 50%, #C9A84C 100%);
+    margin-bottom: 1.5rem;
   }
 
   /* ── Cards ── */
   .card-dark {
-    @apply bg-brand-brown-light border border-white/5 rounded p-6
-           transition-all duration-300;
+    background-color: #181818;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 0.25rem;
+    padding: 1.5rem;
+    transition: all 0.3s;
   }
 
   .card-dark:hover {
-    @apply border-brand-gold/30 shadow-lg shadow-black/40;
+    border-color: rgba(201, 168, 76, 0.3);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.4);
   }
 
   .card-service {
-    @apply bg-[#141414] border border-white/5 rounded p-7 flex flex-col
-           transition-all duration-300 cursor-default;
+    background-color: #141414;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 0.25rem;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+    cursor: default;
   }
 
   .card-service:hover {
-    @apply border-brand-gold/40 shadow-xl shadow-black/50 -translate-y-0.5;
+    border-color: rgba(201, 168, 76, 0.4);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
   }
 
   /* ── Forms ── */
   .input-dark {
-    @apply w-full bg-brand-brown-light border border-white/10 rounded px-4 py-3
-           text-brand-cream placeholder-white/20 font-body text-sm
-           focus:outline-none focus:border-brand-gold/50 transition-colors duration-200;
+    width: 100%;
+    background-color: #181818;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    color: #D8D8D8;
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+    font-size: 0.875rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .input-dark::placeholder {
+    color: rgba(255,255,255,0.2);
+  }
+
+  .input-dark:focus {
+    border-color: rgba(201, 168, 76, 0.5);
   }
 
   .label-gold {
-    @apply block text-xs tracking-widest uppercase text-brand-gold/70 mb-2 font-body;
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(201, 168, 76, 0.7);
+    margin-bottom: 0.5rem;
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
   }
 
   /* ── Price badge ── */
   .price-tag {
-    @apply font-sans text-2xl text-brand-gold font-normal;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem;
+    color: #C9A84C;
+    font-weight: 400;
   }
 
   .price-label {
-    @apply font-body text-xs text-brand-grey tracking-wider;
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+    font-size: 0.75rem;
+    color: #888888;
+    letter-spacing: 0.05em;
   }
 
   /* ── Feature list ── */
   .feature-item {
-    @apply flex items-start gap-2.5 text-sm text-brand-cream/60 font-body leading-relaxed;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-size: 0.875rem;
+    color: rgba(216, 216, 216, 0.6);
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+    line-height: 1.625;
   }
 
   .feature-dot {
-    @apply w-1 h-1 rounded-full bg-brand-gold mt-2 flex-shrink-0;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background-color: #C9A84C;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
   }
 
   /* ── Section overlines ── */
   .overline {
-    @apply font-body text-xs tracking-[0.4em] uppercase text-brand-gold mb-2;
+    font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -128,7 +240,7 @@
   animation: fadeUp 0.6s ease forwards;
 }
 
-/* ── Gold shimmer on hover ── */
+/* ── Gold shimmer ── */
 @keyframes shimmer {
   0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
